@@ -32,8 +32,8 @@ spec:
               memory: "1Gi"
               cpu: "500m"
             requests:
-              memory: "250Mi"
-              cpu: "250m"
+              memory: "256Mi"
+              cpu: "100m"
           ports:
             - name: httpport
               containerPort: 8080
