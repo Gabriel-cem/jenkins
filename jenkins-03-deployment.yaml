@@ -49,7 +49,7 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 3
           volumeMounts:
-            - name: jenkin-argo-data
+            - name: jenkins-argo-data
               mountPath: /var/jenkins_homet
             - name: docker-sock
               mountPath: /var/run/docker.sock
