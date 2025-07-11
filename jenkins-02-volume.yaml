@@ -15,7 +15,7 @@ metadata:
 spec:
   storageClassName: local-storage
   claimRef:
-    name: jenkins-pv-claim
+    name: jenkins-argo-pv-claim
     namespace: testjenkins
   capacity:
     storage: 10Gi
@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jenkins-pv-claim
+  name: jenkins-argo-pv-claim
   namespace: testjenkins
 spec:
   storageClassName: local-storage
