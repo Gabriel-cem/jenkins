@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins
-  namespace: jenkins
+  namespace: testjenkins
 spec:
   replicas: 1
   selector:
@@ -49,12 +49,12 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 3
           volumeMounts:
-            - name: jenkins-data
-              mountPath: /var/jenkins2_home
+            - name: jenkin-argo-data
+              mountPath: /var/jenkins_home
             - name: docker-sock
               mountPath: /var/run/docker.sock
       volumes:
-        - name: jenkins-data
+        - name: jenkins-argo-data
           persistentVolumeClaim:
               claimName: jenkins-pv-claim
         - name: docker-sock
