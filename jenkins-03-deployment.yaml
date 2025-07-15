@@ -50,7 +50,7 @@ spec:
             failureThreshold: 3
           volumeMounts:
             - name: jenkins-argo-data
-              mountPath: /var/jenkins_homet
+              mountPath: /var/jenkins_home
             - name: docker-sock
               mountPath: /var/run/docker.sock
       volumes:
