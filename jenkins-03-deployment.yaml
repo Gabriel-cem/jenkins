@@ -24,7 +24,7 @@ spec:
       serviceAccountName: jenkins-argo-admin
       containers:
         - name: jenkins
-          image: jenkins/jnlp-agent-docker
+          image: jenkins/jenkins:lts
           # OPTIONAL: check for new floating-tag LTS releases whenever the pod is restarted:
           imagePullPolicy: Always
           resources:
