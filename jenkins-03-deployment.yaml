@@ -2,24 +2,31 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins
-  namespace: testjenkins
+  namespace: jenkins
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: jenkins-server
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: jenkins-server
     spec:
       securityContext:
-        fsGroup: 1000
-        runAsUser: 1000
-      serviceAccountName: jenkins-argo-admin
+            # Note: fsGroup may be customized for a bit of better
+            # filesystem security on the shared host
+            fsGroup: 1000
+            runAsUser: 1000
+            ### runAsGroup: 1000
+      serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
+          # OPTIONAL: check for new floating-tag LTS releases whenever the pod is restarted:
+          imagePullPolicy: Always
           resources:
             limits:
               memory: "2Gi"
@@ -51,12 +58,7 @@ spec:
           volumeMounts:
             - name: jenkins-argo-data
               mountPath: /var/jenkins_home
-            - name: docker-sock
-              mountPath: /var/run/docker.sock
       volumes:
         - name: jenkins-argo-data
           persistentVolumeClaim:
-            claimName: jenkins-argo-pv-claim
-        - name: docker-sock
-          hostPath:
-            path: /var/run/docker.sock
+              claimName: jenkins-argo-pv-claim
