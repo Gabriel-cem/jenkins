@@ -14,8 +14,8 @@ spec:
         app: jenkins-server
     spec:
       securityContext:
-            fsGroup: 1000
-            runAsUser: 1000
+        fsGroup: 1000
+        runAsUser: 1000
       serviceAccountName: jenkins-argo-admin
       containers:
         - name: jenkins
@@ -56,9 +56,7 @@ spec:
       volumes:
         - name: jenkins-argo-data
           persistentVolumeClaim:
-              claimName: jenkins-argo-pv-claim
+            claimName: jenkins-argo-pv-claim
         - name: docker-sock
           hostPath:
             path: /var/run/docker.sock
-                                                                                    62,11       Final
-
