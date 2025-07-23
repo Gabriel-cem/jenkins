@@ -57,7 +57,7 @@ spec:
             failureThreshold: 3
           volumeMounts:
             - name: jenkins-argo-data
-              mountPath: /var
+              mountPath: /var/jenkins_home
       volumes:
         - name: jenkins-argo-data
           persistentVolumeClaim:
